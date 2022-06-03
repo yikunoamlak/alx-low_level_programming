@@ -3,7 +3,7 @@
 #include <stdio.h>
 /**
  * main - entry point
- * Description: assign a random number to the variable n each time it is executed
+ * Description: assign a random number to the variable
  * Return: return always (0)
  */
 int main(void)
