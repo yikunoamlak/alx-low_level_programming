@@ -3,11 +3,10 @@
 #include <stdlib.h>
 
 /**
- * main- main entry
- * Description - prints all the numbers of base 16 in lowercase
- * Return : always return (0)
+ * main - main entry
+ * Description: prints all the numbers of base 16 in lowercase
+ * Return: 0
  */
-
 int main(void)
 {
 	char b = 'z';
