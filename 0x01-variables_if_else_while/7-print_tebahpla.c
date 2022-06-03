@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * main-main entry
+ * main- main entry
  * Description - prints all the numbers of base 16 in lowercase
  * Return : always return (0)
  */
