@@ -8,15 +8,21 @@
 int main(void)
 {
   
-  char b;
-  
+  char c = 'a';
 
-  
-  for (b = 'a'; b <= 'z'; b++)
-    
-    if (b != 'q' && b != 'e')
-      
-      putchar(b);
+	while (c <= 'z')
+	{
+		putchar(c);
+		c++;
+	}
+
+	c = 'A';
+
+	while (c <= 'Z')
+	{
+		putchar(c);
+		c++;
+	}
   
   putchar('\n');
   
