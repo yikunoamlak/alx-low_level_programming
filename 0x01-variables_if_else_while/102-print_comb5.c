@@ -5,83 +5,45 @@
  * Description: prints all possible combinations of two -digit numbers
  * Return: 0
  */
-inint c;
+int main(void)
+{
+int a;
+int b;
+int c;
+int d = 0;
 
-int d;
-
-int e;
-
-int f = 0;
-
-
-
-while (f < 10)
-  
-  {
-    
-    e = 0;
-    
-    while (e < 10)
-      
-      {
-	
-	d = 0;
-	
-	while (d < 10)
-	  
-	  {
-	    
-	    c = 0;
-	    
-	    while (c < 10)
-	      
-	      {
-		
-		if (!(f == c && e == d))
-		  
-		  {
-		    
-		    putchar('0' + f);
-		    
-		    putchar('0' + e);
-		    
-		    putchar(' ');
-		    
-		    putchar('0' + d);
-		    
-		    putchar('0' + c);
-		    
-		    if (!(f + e == 18 && c + d == 17 && d == 9))
-		      
-		      {
-			
-			putchar(',');
-			
-			putchar(' ');
-			
-		      }
-		    
-		  }
-		
+while (d < 10)
+{
+	c = 0;
+	while (c < 10)
+	{
+		b = 0;
+		while (b < 10)
+		{
+			a = 0;
+			while (a < 10)
+			{
+				if (!(d == a && c == b))
+				{
+					putchar('0' + d);
+					putchar('0' + c);
+					putchar(' ');
+					putchar('0' + b);
+					putchar('0' + a);
+					if (!(d + c == 18 && a + b == 17 && b == 9))
+					{
+						putchar(',');
+						putchar(' ');
+					}
+				}
+				a++;
+			}
+			b++;
+		}
 		c++;
-		
-	      }
-	    
-	    d++;
-	    
-	  }
-	
-	e++;
-	
-      }
-    
-    f++;
-    
-  }
-
-putchar('\n');
-
-return (0);
-
+	}
+	d++;
 }
-  
+putchar('\n');
+return (0);
+}
