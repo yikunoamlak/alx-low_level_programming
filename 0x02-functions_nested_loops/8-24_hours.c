@@ -2,7 +2,7 @@
 
 /**
  * jack_bauer - prints every minute of the day
- * @n : number to check
+ *
  * Return: void
  */
 void jack_bauer(void)
