@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* main - entry point
+/*
+ * main - entry point
  * Description: computes and prints the sum of all the multiples
  * 3 or 5 below 1024 (excluded), followed by a new line
  * Return: 0 (success)
