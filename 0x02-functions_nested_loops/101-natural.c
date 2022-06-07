@@ -7,11 +7,12 @@
  * 3 or 5 below 1024 (excluded), followed by a new line
  * Return: 0 (success)
  */
+
 int main(void)
 {
 	int i = 1;
 	int total = 0;
-	
+
 	while (i < 1024)
 
 	{
