@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <main.h>
 /**
  * main - entry point
  * descrption - writes _putchar followed by new line
