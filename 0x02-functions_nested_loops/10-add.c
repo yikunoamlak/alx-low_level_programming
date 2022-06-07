@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * add - adds two integers
- * @a : first integer
- * @b : secod integer
- * returns : 0
+ * add - returns the sum of its parameters
+ * @a: int type number
+ * @b: int type number
+ * Return:0
  */
 
 int add(int a, int b)
