@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * main - print_diagonal
- * Description: drawis diagonal line
- * Return: 0
+ * print_diagonal - check for a digit
+ * @n : number of \\ to be printed
+ * Return:void
  */
 
 void print_diagonal(int n)
@@ -26,4 +26,5 @@ void print_diagonal(int n)
 	}
 	if (i == 0)
 		_putchar('\n');
+
 }
