@@ -5,8 +5,9 @@
  * Description: Fizz-Buzz
  * return: always 0
  */
-int main (void)
+int main(void)
 {
+
 	int i = 1;
 
 	while (i <= 100)
@@ -30,13 +31,13 @@ int main (void)
 
 		if (i != 100)
 		{
-			putchar (' ');
+			putchar(' ');
 		}
 
 		i++;
 	}
-
 	putchar('\n');
 	return (0);
+
 }
 
