@@ -1,10 +1,10 @@
-#include "main.h"
 #include <stdio.h>
-/*
- * main -entry point
- * Description: Fizz-Buzz
- * return: always 0
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: void.
  */
+
 int main(void)
 {
 
@@ -40,4 +40,3 @@ int main(void)
 	return (0);
 
 }
-
