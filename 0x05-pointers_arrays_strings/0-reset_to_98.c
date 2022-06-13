@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "main.h"
-/*
- * main - entry point
- * Description: Updates the value of a pointer
- * Return: Always 0
- */
+/**
+ * reset_to_98 - Updates pointer to 98
+ * @n: pointer
+ * Return: void
+*/
 void reset_to_98(int *n)
 {
 	*n = 98;
