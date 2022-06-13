@@ -1,6 +1,7 @@
 # C - Pointers, arrays and strings
 
-## Description: * A pointer is the address of of a piece of data in memory.
+## Description: 
+		* A pointer is the address of of a piece of data in memory.
 		* An Array is area that hold anumber of values of the same type.
 		* String is array of characters terminatd by a null character \0.
 
