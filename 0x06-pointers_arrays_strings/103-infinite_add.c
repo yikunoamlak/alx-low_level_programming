@@ -59,6 +59,5 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
     b = _atoi(n2);
 
     sum = a + b;
-
-
+return (0);
 }
