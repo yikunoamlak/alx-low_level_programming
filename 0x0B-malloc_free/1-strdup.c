@@ -1,101 +1,34 @@
-#include "holberton.h"
-
+#include "main.h"
+#include <stdlib.h>
 #include <stdio.h>
 
-#include <stdlib.h>
-
-
-
 /**
- *
- *  * simple_print_buffer - prints buffer in hexa
- *
- *   * @buffer: the address of memory to print
- *
- *    * @size: the size of the memory to print
- *
- *     *
- *
- *      * Return: Nothing.
- *
- *       */
+ * *_strdup - return a pointer to a newly allocated space in memory
+ * which contains a copy of the string given as a parameter.
+ * @str: string
+ * Return: 0
+ */
 
-void simple_print_buffer(char *buffer, unsigned int size)
-
+char *_strdup(char *str)
 {
+int i = 0, size = 0;
+char *m;
 
-	unsigned int i;
+if (str == NULL)
+	return (NULL);
 
+for (; str[size] != '\0'; size++)
+;
 
+/*+1 on the size puts the end of string character*/
+m = malloc(size * sizeof(*str) + 1);
 
-	i = 0;
-
-	while (i < size)
-
-	{
-
-			if (i % 10)
-
-					{
-
-								printf(" ");
-
-									}
-
-				if (!(i % 10) && i)
-
-						{
-
-									printf("\n");
-
-										}
-
-					printf("0x%02x", buffer[i]);
-
-						i++;
-
-	}
-
-	printf("\n");
-
+if (m == 0)
+	return (NULL);
+else
+{
+	for (; i < size; i++)
+		m[i] = str[i];
 }
-
-
-
-/**
- *
- *  * main - check the code for Holberton School students.
- *
- *   *
- *
- *    * Return: Always 0.
- *
- *     */
-
-int main(void)
-
-{
-
-	char *buffer;
-
-
-
-	buffer = create_array(98, 'H');
-
-	if  (buffer == NULL)
-
-	{
-
-			printf("failed to allocate memory\n");
-
-				return (1);
-
-	}
-
-	simple_print_buffer(buffer, 98);
-
-	free(buffer);
-
-	return (0);
-
+return (m);
 }
