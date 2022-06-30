@@ -3,163 +3,132 @@
 #include <stdlib.h>
 
 /**
- * _strlen - returns the length of a string
- * @s: string s
- * Return: length of string
+ * adding_all_mul - sum all the addition to know the multiplication result
+ * @a: number 1
+ * @len_a: lenght of number 1
+ * @b: number 2
+ * @len_b: lenght of number 2
+ * Return: Addition pointer to the total resul of the  multiplication
  */
-int _strlen(char *s)
+add_t *adding_all_mul(char *a, int len_a, char *b, int len_b)
 {
-	char *p = s;
+	add_t *result = NULL;
+	int i = 0, j = 0, carry = 0;
 
-	while (*s)
-		s++;
-	return (s - p);
-}
+	result = malloc(sizeof(add_t));
 
-/**
- * _memset - fills memory with a constant byte.
- * @s: the memory area to be filled
- * @b: the constant byte
- * @n: number of bytes to fill with char b
- * Return: a pointer to the memory area s.
- */
+	result->next = NULL, result->n_dig = 0, result->len_r = len_a + len_b;
 
-char *_memset(char *s, char b, unsigned int n)
-{
-	char *p = s;
+	result->n_add = malloc(sizeof(char) * result->len_r);
 
-	for (; n; n--)
-		*p++ = b;
+	for (i = 0; i < result->len_r; i++)
+		result->n_add[i] = '0';
 
-	return (s);
-}
-
-/**
- * _calloc - allocates memory for an array
- * @nmemb: number of elements
- * @size: of each element
- * Return: void *
- */
-void *_calloc(unsigned int nmemb, unsigned int size)
-{
-	void *ptr;
-
-	if (size == 0 || nmemb == 0)
-		return (NULL);
-
-	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
-		return (NULL);
-
-	_memset(ptr, 0, size * nmemb);
-
-	return (ptr);
-}
-
-/**
- *_puts - prints a string, followed by a new line, to stdout.
- * @str: the input string
- * Return: nothing to return.
- */
-void _puts(char *str)
-{
-	while (*str != 0)
+	for (i = len_a - 1; i >= 0; i--)
 	{
-		_putchar(*str);
-		str++;
-	}
-	_putchar('\n');
-}
-
-/**
- * strNumbers - determines if string has only numbers
- * @str: input string
- * Return: 0 if false, 1 if true
- */
-int strNumbers(char *str)
-{
-	while (*str)
-	{
-		if (*str < '0' || *str > '9')
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-/**
- * multiply - multiplies two numbers (in string), and prints the result.
- * @n1: first number
- * @n2: second number
- * Return: void
- */
-
-void multiply(char *n1, char *n2)
-{
-	int idx, n1n, n2n, res, tmp, total;
-	int n1l = _strlen(n1);
-	int n2l = _strlen(n2);
-
-	int *ptr;
-
-	tmp = n2l;
-	total = n1l + n2l;
-	ptr = _calloc(total, sizeof(int));
-	for (n1l--; n1l >= 0; n1l--)
-	{
-		n1n = n1[n1l] - '0';
-		res = 0;
-		n2l = tmp;
-		for (n2l--; n2l >= 0; n2l--)
+		carry = 0;
+		for (j = len_b - 1; j >= 0; j--)
 		{
-			n2n = n2[n2l] - '0';
-			res += ptr[n1l + n2l + 1] + (n1n * n2n);
-			ptr[n1l + n2l + 1] = res % 10;
-			res /= 10;
-		}
-		if (res)
-		{
-			ptr[n1l + n2l + 1] = res % 10;
-		}
-	}
-	res = 0;
-	for (idx = 0; idx < total; idx++)
-	{
-		if (ptr[idx] == 0 && res == 1)
-			_putchar(ptr[idx] + '0');
-		else if (ptr[idx] > 0)
-		{
-			_putchar(ptr[idx] + '0');
-			res = 1;
-		}
-	}
-	_putchar('\n');
-	free(ptr);
-}
+			carry += (a[i] - '0') * (b[j] - '0');
+			carry += result->n_add[i + j + 1] - '0';
 
-/**
- * main - adds positive numbers.
- * @argc: the number of arguments
- * @argv: the arguments
- *
- * Return: 0
- */
-
-int main(int argc, char **argv)
-{
-	char *nb1 = argv[1];
-	char *nb2 = argv[2];
-
-	if (argc != 3 || !strNumbers(nb1) || !strNumbers(nb2))
-	{
-		_puts("Error");
-		exit(98);
+			result->n_add[i + j + 1] = (carry % 10) + '0';
+			carry /= 10;
+		}
+		if (carry)
+			result->n_add[i + j + 1] = (carry % 10) + '0';
 	}
-	if (*nb1 == '0' || *nb2 == '0')
-		_puts("0");
+	if (result->n_add[0] != '0')
+		result->n_dig = len_a + len_b;
 	else
+		result->n_dig = len_a + len_b - 1;
+
+	return (result);
+}
+
+/**
+ * print_free_result - print the result of the multiplication and free all
+ * @result: Addition pointer to the total resul of the  multiplication
+ * Result: Nothing
+ */
+void print_free_result(add_t *result)
+{
+	int i = 0, start_n = 0;
+
+	i = 0;
+	while (i < result->n_dig)
 	{
-		multiply(nb1, nb2);
+		if (start_n || result->n_add[result->len_r - result->n_dig + i] != '0')
+		{
+			_putchar(result->n_add[result->len_r - result->n_dig + i]);
+			start_n = 1;
+		}
+		i++;
 	}
+	if (!result->n_dig || !start_n)
+		_putchar('0');
+	_putchar('\n');
+	free(result->n_add);
+	free(result);
+}
+
+/**
+ * error_message - print an error message and exit with status 98
+ * Return: Nothing
+ */
+void error_message(void)
+{
+	char error_msg[] = "Error";
+	int i = 0;
+
+	while (error_msg[i] != '\0')
+	{
+		_putchar(error_msg[i]);
+		i++;
+	}
+
+	_putchar('\n');
+
+	exit(98);
+}
+
+/**
+ * main - multiply 2 long numbers
+ * usage <> ./mul num1 num2
+ * @ac: number of arguments
+ * @av: list of arguments
+ * Return: 0 on success, another number otherwise
+ */
+int main(int ac, char **av)
+{
+	char *a = NULL, *b =  NULL;
+	int i = 0, len_a = 0, len_b = 0, is_a = 1, is_b = 1, len_r = 0;
+	add_t *result = NULL;
+
+	if (ac != 3)
+		error_message();
+
+	for (i = 0, a = av[1], b = av[2]; is_a == 1 || is_b == 1; i++)
+	{
+		if (is_a == 1 && a[i] == '\0')
+			is_a = 0, len_a = i;
+		if (is_b == 1 && b[i] == '\0')
+			is_b = 0, len_b = i;
+		if ((is_a == 1 && (a[i] < '0' || a[i] > '9')) ||
+				(is_b == 1 && (b[i] < '0' || b[i] > '9')))
+			error_message();
+	}
+
+	if (len_a == 0 || len_b == 0)
+		error_message();
+
+	len_r = len_a + len_b;
+	if (len_a > len_b)
+		a = av[2], b = av[1], len_a = len_b, len_b = len_r - len_b;
+
+	result = adding_all_mul(a, len_a, b, len_b);
+
+	print_free_result(result);
+
 	return (0);
 }
